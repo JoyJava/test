@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="asyncServlet3:war">
+    <output-path>$PROJECT_DIR$/asyncServlet3/target</output-path>
+    <root id="archive" name="asyncServlet3.war">
+      <element id="artifact" artifact-name="asyncServlet3:war exploded" />
+    </root>
+  </artifact>
+</component>

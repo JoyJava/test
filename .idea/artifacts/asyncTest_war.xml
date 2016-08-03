@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="asyncTest:war">
+    <output-path>$PROJECT_DIR$/asyncTest/target</output-path>
+    <root id="archive" name="asyncTest.war">
+      <element id="artifact" artifact-name="asyncTest:war exploded" />
+    </root>
+  </artifact>
+</component>
