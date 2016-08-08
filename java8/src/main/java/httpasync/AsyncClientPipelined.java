@@ -50,7 +50,7 @@ public class AsyncClientPipelined {
 
             HttpHost targetHost = new HttpHost("money.moneydj.com", 80);
             HttpGet[] resquests = {
-                    new HttpGet("/us/basic/basic0001/A"),
+                    new HttpGet("/us/basic/basic0001/Person"),
                     new HttpGet("/us/basic/basic0001/AA"),
                     new HttpGet("/us/basic/basic0001/PSG"),
 //                    new HttpGet("/docs/introduction.html"),

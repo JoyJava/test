@@ -38,7 +38,7 @@ import org.apache.http.impl.nio.client.HttpAsyncClients;
 import java.util.concurrent.Future;
 
 /**
- * A simple example that uses HttpClient to execute an HTTP request against
+ * Person simple example that uses HttpClient to execute an HTTP request against
  * a target site that requires user authentication.
  */
 public class AsyncClientAuthentication {
