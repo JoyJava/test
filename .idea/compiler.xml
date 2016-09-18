@@ -25,12 +25,14 @@
         <module name="asyncServlet3" />
         <module name="asyncTest" />
         <module name="java8" />
+        <module name="zookeeper-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="asyncServlet3" target="1.5" />
       <module name="asyncTest" target="1.8" />
       <module name="java8" target="1.8" />
+      <module name="zookeeper-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -22,6 +22,7 @@
         <option value="$PROJECT_DIR$/java8/pom.xml" />
         <option value="$PROJECT_DIR$/asyncTest/pom.xml" />
         <option value="$PROJECT_DIR$/asyncServlet3/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-test/pom.xml" />
       </list>
     </option>
   </component>
