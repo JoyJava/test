@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apche.curator:curator-framework">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apche/curator/curator-framework/curator-framework-.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apche/curator/curator-framework/curator-framework--javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apche/curator/curator-framework/curator-framework--sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
