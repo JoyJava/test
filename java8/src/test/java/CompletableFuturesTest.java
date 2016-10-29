@@ -8,9 +8,9 @@ public class CompletableFuturesTest {
     public void test3StageGetWithCompose() throws Exception {
         getFirst()
                 .thenCompose(firstStr -> getSecondDependingOnFirst(firstStr)
-                    .thenCompose(secondStr -> getThirdDependingOnFirstAndSecond(firstStr, secondStr))
-        ).whenComplete((thirdStr, ex) -> {
-            System.out.println("nested: " + thirdStr + (ex != null ? " : " +ex.getMessage() : ""));
+                        .thenCompose(secondStr -> getThirdDependingOnFirstAndSecond(firstStr, secondStr))
+                ).whenComplete((thirdStr, ex) -> {
+            System.out.println("nested: " + thirdStr + (ex != null ? " : " + ex.getMessage() : ""));
         });
     }
 
@@ -18,11 +18,11 @@ public class CompletableFuturesTest {
     public void test3StageGetNested() throws Exception {
         CompletableFuture<String> firstFuture = getFirst();
         firstFuture.whenComplete((firstStr, firstEx) -> {
-           CompletableFuture<String> secondFuture = getSecondDependingOnFirst(firstStr);
+            CompletableFuture<String> secondFuture = getSecondDependingOnFirst(firstStr);
             secondFuture.whenComplete((secondStr, secondEx) -> {
                 CompletableFuture<String> thirdFuture = getThirdDependingOnFirstAndSecond(firstStr, secondStr);
                 thirdFuture.whenComplete((thirdStr, ex) -> {
-                    System.out.println("nested: " + thirdStr + (ex != null ? " : " +ex.getMessage() : ""));
+                    System.out.println("nested: " + thirdStr + (ex != null ? " : " + ex.getMessage() : ""));
                 });
             });
         });
@@ -55,7 +55,7 @@ public class CompletableFuturesTest {
             // We can call .join here because we know that secondFuture won't complete before firstFuture
             return getThirdDependingOnFirstAndSecond(firstFuture.join(), secondStr);
         }).whenComplete((thirdStr, ex) -> {
-            System.out.println("short: " + thirdStr + (ex != null ? " : " +ex.getMessage() : ""));
+            System.out.println("short: " + thirdStr + (ex != null ? " : " + ex.getMessage() : ""));
         });
     }
 

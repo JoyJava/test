@@ -53,7 +53,7 @@ import java.util.stream.Collectors;
  * with a full content streaming.
  */
 public class AsyncClientPipelinedStreaming {
-    String url = "http://globalquotes.xignite.com/v3/xGlobalQuotes.json/GetGlobalDelayedQuotes?_Token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Username=jiawei.bao@jimu.com&IdentifierType=Symbol&Identifiers=" ;
+    String url = "http://globalquotes.xignite.com/v3/xGlobalQuotes.json/GetGlobalDelayedQuotes?_Token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Username=jiawei.bao@jimu.com&IdentifierType=Symbol&Identifiers=";
 
     public static void main(final String[] args) throws Exception {
         for (int i = 0; i < 20; i++) {
@@ -62,7 +62,7 @@ public class AsyncClientPipelinedStreaming {
         }
     }
 
-    public static void a(){
+    public static void a() {
         long start = System.currentTimeMillis();
         CloseableHttpPipeliningClient httpclient = HttpAsyncClients.createPipelining();
         try {
@@ -85,10 +85,10 @@ public class AsyncClientPipelinedStreaming {
 //            400 * 21 组任务 ~~~~~~~~~~~~~~~ Shutting down 执行时间: 27476
 //              avg=18923.8
 
-            int take = 400 ;
-            for (int i = 0; i < codes.length/take; i++) {
+            int take = 400;
+            for (int i = 0; i < codes.length / take; i++) {
                 String code = Arrays.asList(codes).stream().skip(i * take).limit(take).collect(Collectors.joining(","));
-                HttpGet request = new HttpGet(StockParser.uri + URLEncoder.encode( code.trim()));
+                HttpGet request = new HttpGet(StockParser.uri + URLEncoder.encode(code.trim()));
                 requestProducers.add(new MyRequestProducer(targetHost, request));
                 responseConsumers.add(new MyResponseConsumer(request));
             }
@@ -115,10 +115,10 @@ public class AsyncClientPipelinedStreaming {
                         }
                     });
             future.get();
-            System.out.println(take + " * "+ responseConsumers.size() +" 组任务 ~~~~~~~~~~~~~~~ Shutting down 执行时间: " +(System.currentTimeMillis() - start));
-        }catch (Exception e){
+            System.out.println(take + " * " + responseConsumers.size() + " 组任务 ~~~~~~~~~~~~~~~ Shutting down 执行时间: " + (System.currentTimeMillis() - start));
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 httpclient.close();
             } catch (IOException e) {
@@ -154,7 +154,7 @@ public class AsyncClientPipelinedStreaming {
 
         @Override
         protected void onResponseReceived(final HttpResponse response) {
-            System.out.println(response.getStatusLine() +"  "+ request.getRequestLine().toString());
+            System.out.println(response.getStatusLine() + "  " + request.getRequestLine().toString());
 //            System.out.println("            Response received: " + response.getStatusLine() + " -> " + this.request.getRequestLine()  );
         }
 

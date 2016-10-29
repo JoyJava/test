@@ -39,9 +39,10 @@ public class StockParser {
 
 
     }
-    String xigniteUrl = "http://globalquotes.xignite.com/v3/xGlobalQuotes.json/GetGlobalDelayedQuotes?_Token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Username=jiawei.bao@jimu.com&IdentifierType=Symbol&Identifiers=" ;
 
-   public static String uri  ="/v3/xGlobalQuotes.json/GetGlobalDelayedQuotes?_Token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Username=jiawei.bao@jimu.com&IdentifierType=Symbol&Identifiers=";
+    String xigniteUrl = "http://globalquotes.xignite.com/v3/xGlobalQuotes.json/GetGlobalDelayedQuotes?_Token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Username=jiawei.bao@jimu.com&IdentifierType=Symbol&Identifiers=";
+
+    public static String uri = "/v3/xGlobalQuotes.json/GetGlobalDelayedQuotes?_Token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Username=jiawei.bao@jimu.com&IdentifierType=Symbol&Identifiers=";
 
     private static void doGet(String... urls) {
         HttpHost targetHost = new HttpHost("money.moneydj.com");
@@ -82,7 +83,7 @@ public class StockParser {
                             } catch (ParseException | IOException e) {
                                 e.printStackTrace();
                             }
-                            System.out.println(code + "\t" + parseHtml(body) +"\n");
+                            System.out.println(code + "\t" + parseHtml(body) + "\n");
 //                            System.out.println(request.getURI() + "\t" + body );
                         }
 

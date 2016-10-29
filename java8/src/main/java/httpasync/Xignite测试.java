@@ -25,18 +25,18 @@ import java.util.stream.Collectors;
  * User: fh
  * Date: 16/4/28 17:13
  */
-public class Xignite测试  {
-    String url = "https://stream.xignite.com/xNASDAQLastSale.json/GetExtendedQuotes?IdentifierType=Symbol&_token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Identifiers=" ;
-    private static String uri = "xNASDAQLastSale.json/GetExtendedQuotes?IdentifierType=Symbol&_token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Identifiers=" ;
+public class Xignite测试 {
+    String url = "https://stream.xignite.com/xNASDAQLastSale.json/GetExtendedQuotes?IdentifierType=Symbol&_token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Identifiers=";
+    private static String uri = "xNASDAQLastSale.json/GetExtendedQuotes?IdentifierType=Symbol&_token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Identifiers=";
 
     public static void main(final String[] args) throws Exception {
 //        for (int i = 0; i < 20; i++) {
 //            new Thread(AsyncClientPipelinedStreaming::a).start();
-            a();
+        a();
 //        }
     }
 
-    public static void a(){
+    public static void a() {
         long start = System.currentTimeMillis();
         CloseableHttpPipeliningClient httpclient = HttpAsyncClients.createPipelining();
         try {
@@ -54,15 +54,15 @@ public class Xignite测试  {
 //            400 * 21 组任务 ~~~~~~~~~~~~~~~ Shutting down 执行时间: 27476
 //              avg=18923.8
 
-            int take = 3 ;
-            for (int i = 0; i < codes.length/take; i++) {
+            int take = 3;
+            for (int i = 0; i < codes.length / take; i++) {
                 String codeList = Arrays.asList(codes).stream().skip(i * take).limit(take).collect(Collectors.joining(","));
 
-                HttpGet request = new HttpGet(uri + URLEncoder.encode( codeList.trim()));
+                HttpGet request = new HttpGet(uri + URLEncoder.encode(codeList.trim()));
                 requestProducers.add(new MyRequestProducer(targetHost, request));
                 responseConsumers.add(new MyResponseConsumer(request));
             }
-            System.out.println("任务数量 = "+ responseConsumers.size());
+            System.out.println("任务数量 = " + responseConsumers.size());
 
             Future<List<Boolean>> future = httpclient.execute(
                     targetHost, requestProducers, responseConsumers, new FutureCallback<List<Boolean>>() {
@@ -82,10 +82,10 @@ public class Xignite测试  {
                         }
                     });
             future.get();
-            System.out.println(take + " * "+ responseConsumers.size() +" 组任务 ~~~~~~~~~~~~~~~ Shutting down 执行时间: " +(System.currentTimeMillis() - start));
-        }catch (Exception e){
+            System.out.println(take + " * " + responseConsumers.size() + " 组任务 ~~~~~~~~~~~~~~~ Shutting down 执行时间: " + (System.currentTimeMillis() - start));
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 httpclient.close();
             } catch (IOException e) {
@@ -107,7 +107,7 @@ public class Xignite测试  {
         @Override
         public void requestCompleted(final HttpContext context) {
             super.requestCompleted(context);
-            System.out.println("Request sent: " + this.request.getRequestLine() );
+            System.out.println("Request sent: " + this.request.getRequestLine());
         }
     }
 
@@ -122,7 +122,7 @@ public class Xignite测试  {
         @Override
         protected void onResponseReceived(final HttpResponse response) {
 //            System.out.println(response.getStatusLine() +"  "+ request.getRequestLine().toString());
-            System.out.println("            Response received: " + response.getStatusLine() + " -> " + this.request.getRequestLine()  );
+            System.out.println("            Response received: " + response.getStatusLine() + " -> " + this.request.getRequestLine());
         }
 
         @Override
@@ -139,7 +139,7 @@ public class Xignite测试  {
         @Override
         protected Boolean buildResult(final HttpContext context) {
             System.out.println();
-            System.out.println( "=================================================");
+            System.out.println("=================================================");
             System.out.println();
             return Boolean.TRUE;
         }

@@ -111,7 +111,7 @@ public class QuickStart {
                     return this.response;
                 }
 
-            } ;
+            };
             httpclient.execute(producer3, consumer3, new FutureCallback<HttpResponse>() {
 
                 @Override

@@ -25,8 +25,7 @@ public class LambdaReduce {
 //        System.out.println();
 
 
-
-        int start = 1 ;
+        int start = 1;
 
 //        Integer reduce = listPerson.stream()
 //                .reduce(0, (a,b) -> {
@@ -44,19 +43,18 @@ public class LambdaReduce {
          * java.util.stream.ReferencePipeline#reduce  -> java.util.stream.ReduceOps#makeRef
          * */
         Integer reduce1 = listPerson
-                            .stream()
-                            .parallel()
-                            .reduce(start,//1 初始值1的话,在并发情况下结果是不同的
-                                    (sum, person) -> {
-                                        System.out.println("sum + getAge() = " + sum + " + "+ person.getAge() + " Tid: " + Thread.currentThread().getName() );
-                                        return sum += person.getId();
-                                    },
-                                    (u, u2) -> {
-                                        System.out.println("u + u2 = " + u +" + "+ u2 + " Tid: " + Thread.currentThread().getName() );
-                                        return u + u2;
-                                    });
-        System.out.println("reduce1 = " + reduce1 + " Tid: " + Thread.currentThread().getName() +"\n" );
-
+                .stream()
+                .parallel()
+                .reduce(start,//1 初始值1的话,在并发情况下结果是不同的
+                        (sum, person) -> {
+                            System.out.println("sum + getAge() = " + sum + " + " + person.getAge() + " Tid: " + Thread.currentThread().getName());
+                            return sum += person.getId();
+                        },
+                        (u, u2) -> {
+                            System.out.println("u + u2 = " + u + " + " + u2 + " Tid: " + Thread.currentThread().getName());
+                            return u + u2;
+                        });
+        System.out.println("reduce1 = " + reduce1 + " Tid: " + Thread.currentThread().getName() + "\n");
 
 
         /**
@@ -75,8 +73,6 @@ public class LambdaReduce {
 //                                        return u + u2;
 //                                    });
 //        System.out.println("reduce3 = " + reduce3 + " Tid: " + Thread.currentThread().getName() +"\n" );
-
-
 
 
 //        Integer reduce2 = listPerson.stream().parallel().map(Person::getId)
@@ -99,15 +95,19 @@ class Person {
         this.id = id;
         this.age = age;
     }
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public int getAge() {
         return age;
     }
+
     public void setAge(int age) {
         this.age = age;
     }

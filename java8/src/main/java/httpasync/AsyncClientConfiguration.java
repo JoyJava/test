@@ -136,9 +136,9 @@ public class AsyncClientConfiguration {
         // Create a registry of custom connection session strategies for supported
         // protocol schemes.
         Registry<SchemeIOSessionStrategy> sessionStrategyRegistry = RegistryBuilder.<SchemeIOSessionStrategy>create()
-            .register("http", NoopIOSessionStrategy.INSTANCE)
-            .register("https", new SSLIOSessionStrategy(sslcontext, hostnameVerifier))
-            .build();
+                .register("http", NoopIOSessionStrategy.INSTANCE)
+                .register("https", new SSLIOSessionStrategy(sslcontext, hostnameVerifier))
+                .build();
 
         // Use custom DNS resolver to override the system DNS resolution.
         DnsResolver dnsResolver = new SystemDefaultDnsResolver() {
@@ -146,7 +146,7 @@ public class AsyncClientConfiguration {
             @Override
             public InetAddress[] resolve(final String host) throws UnknownHostException {
                 if (host.equalsIgnoreCase("myhost")) {
-                    return new InetAddress[] { InetAddress.getByAddress(new byte[] {127, 0, 0, 1}) };
+                    return new InetAddress[]{InetAddress.getByAddress(new byte[]{127, 0, 0, 1})};
                 } else {
                     return super.resolve(host);
                 }
@@ -170,16 +170,16 @@ public class AsyncClientConfiguration {
 
         // Create message constraints
         MessageConstraints messageConstraints = MessageConstraints.custom()
-            .setMaxHeaderCount(200)
-            .setMaxLineLength(2000)
-            .build();
+                .setMaxHeaderCount(200)
+                .setMaxLineLength(2000)
+                .build();
         // Create connection configuration
         ConnectionConfig connectionConfig = ConnectionConfig.custom()
-            .setMalformedInputAction(CodingErrorAction.IGNORE)
-            .setUnmappableInputAction(CodingErrorAction.IGNORE)
-            .setCharset(Consts.UTF_8)
-            .setMessageConstraints(messageConstraints)
-            .build();
+                .setMalformedInputAction(CodingErrorAction.IGNORE)
+                .setUnmappableInputAction(CodingErrorAction.IGNORE)
+                .setCharset(Consts.UTF_8)
+                .setMessageConstraints(messageConstraints)
+                .build();
         // Configure the connection manager to use connection configuration either
         // by default or for a specific host.
         connManager.setDefaultConnectionConfig(connectionConfig);
@@ -197,20 +197,20 @@ public class AsyncClientConfiguration {
         CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         // Create global request configuration
         RequestConfig defaultRequestConfig = RequestConfig.custom()
-            .setCookieSpec(CookieSpecs.DEFAULT)
-            .setExpectContinueEnabled(true)
-            .setTargetPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.DIGEST))
-            .setProxyPreferredAuthSchemes(Arrays.asList(AuthSchemes.BASIC))
-            .build();
+                .setCookieSpec(CookieSpecs.DEFAULT)
+                .setExpectContinueEnabled(true)
+                .setTargetPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.DIGEST))
+                .setProxyPreferredAuthSchemes(Arrays.asList(AuthSchemes.BASIC))
+                .build();
 
         // Create an HttpClient with the given custom dependencies and configuration.
         CloseableHttpAsyncClient httpclient = HttpAsyncClients.custom()
-            .setConnectionManager(connManager)
-            .setDefaultCookieStore(cookieStore)
-            .setDefaultCredentialsProvider(credentialsProvider)
+                .setConnectionManager(connManager)
+                .setDefaultCookieStore(cookieStore)
+                .setDefaultCredentialsProvider(credentialsProvider)
 //            .setProxy(new HttpHost("myproxy", 8080))
-            .setDefaultRequestConfig(defaultRequestConfig)
-            .build();
+                .setDefaultRequestConfig(defaultRequestConfig)
+                .build();
 
         try {
 //            HttpGet httpget = new HttpGet("http://localhost/");
@@ -218,11 +218,11 @@ public class AsyncClientConfiguration {
             // Request configuration can be overridden at the request level.
             // They will take precedence over the one set at the client level.
             RequestConfig requestConfig = RequestConfig.copy(defaultRequestConfig)
-                .setSocketTimeout(5000)
-                .setConnectTimeout(5000)
-                .setConnectionRequestTimeout(5000)
+                    .setSocketTimeout(5000)
+                    .setConnectTimeout(5000)
+                    .setConnectionRequestTimeout(5000)
 //                .setProxy(new HttpHost("myotherproxy", 8080))
-                .build();
+                    .build();
             httpget.setConfig(requestConfig);
 
             // Execution context can be customized locally.

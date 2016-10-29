@@ -29,7 +29,7 @@ public class TestJvm {
         //获取线程ID
         MonitoredHost monitoredHost = MonitoredHost.getMonitoredHost("localhost");
         monitoredHost.activeVms().forEach((it) ->
-                        System.out.println("PID = " + it)
+                System.out.println("PID = " + it)
         );
 
 
@@ -39,7 +39,7 @@ public class TestJvm {
 //        System.out.println(ygc.getValue());
 //        System.out.println(fgc.getValue());
         monitoredVm.findByPattern(".*").forEach((Monitor it) -> {
-            System.out.println(it.getName()+" = " + it.getValue());
+            System.out.println(it.getName() + " = " + it.getValue());
         });
 
         BsdVirtualMachine vm = (BsdVirtualMachine) VirtualMachine.attach("585");

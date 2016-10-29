@@ -43,20 +43,20 @@ public class AsyncClientHttpExchangeFutureCallback {
 
     public static void main(final String[] args) throws Exception {
         RequestConfig requestConfig = RequestConfig.custom()
-            .setSocketTimeout(3000)
-            .setConnectTimeout(3000).build();
+                .setSocketTimeout(3000)
+                .setConnectTimeout(3000).build();
         CloseableHttpAsyncClient httpclient = HttpAsyncClients.custom()
-            .setDefaultRequestConfig(requestConfig)
-            .build();
+                .setDefaultRequestConfig(requestConfig)
+                .build();
         try {
             httpclient.start();
-            final HttpGet[] requests = new HttpGet[] {
+            final HttpGet[] requests = new HttpGet[]{
                     new HttpGet("http://www.apache.org/"),
                     new HttpGet("https://www.verisign.com/"),
                     new HttpGet("http://www.google.com/")
             };
             final CountDownLatch latch = new CountDownLatch(requests.length);
-            for (final HttpGet request: requests) {
+            for (final HttpGet request : requests) {
                 httpclient.execute(request, new FutureCallback<HttpResponse>() {
 
                     @Override

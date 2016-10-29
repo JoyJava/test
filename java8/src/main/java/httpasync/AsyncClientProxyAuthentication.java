@@ -46,7 +46,7 @@ import java.util.concurrent.Future;
  */
 public class AsyncClientProxyAuthentication {
 
-    public static void main(String[] args)throws Exception {
+    public static void main(String[] args) throws Exception {
         CredentialsProvider credsProvider = new BasicCredentialsProvider();
         credsProvider.setCredentials(
                 new AuthScope("someproxy", 8080),

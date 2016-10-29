@@ -25,12 +25,12 @@ public class Test {
 //        System.out.println(list);
 
         List<String> list = new ArrayList<String>();
-        add(list,10);
+        add(list, 10);
         String s = list.get(0);
 
     }
 
-    public static void add(List l , Object o){
+    public static void add(List l, Object o) {
         l.add(o);
     }
 }

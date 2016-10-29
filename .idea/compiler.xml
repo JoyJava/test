@@ -23,15 +23,33 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="asyncServlet3" />
-        <module name="asyncTest" />
         <module name="fh" />
-        <module name="java8" />
+      </profile>
+      <profile default="false" name="Annotation profile for zookeeper-test" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
         <module name="zookeeper-test" />
+      </profile>
+      <profile default="false" name="Annotation profile for asyncTest" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="asyncTest" />
+      </profile>
+      <profile default="false" name="Annotation profile for java8" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="java8" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="asyncServlet3" target="1.5" />
-      <module name="asyncTest" target="1.5" />
+      <module name="asyncTest" target="1.8" />
       <module name="fh" target="1.5" />
       <module name="java8" target="1.8" />
       <module name="zookeeper-test" target="1.8" />

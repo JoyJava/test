@@ -57,16 +57,16 @@ public class AsyncClientEvictExpiredConnections {
 
             // create an array of URIs to perform GETs on
             String[] urisToGet = {
-                "http://hc.apache.org/",
-                "http://hc.apache.org/httpcomponents-core-ga/",
-                "http://hc.apache.org/httpcomponents-client-ga/",
+                    "http://hc.apache.org/",
+                    "http://hc.apache.org/httpcomponents-core-ga/",
+                    "http://hc.apache.org/httpcomponents-client-ga/",
             };
 
             IdleConnectionEvictor connEvictor = new IdleConnectionEvictor(cm);
             connEvictor.start();
 
             final CountDownLatch latch = new CountDownLatch(urisToGet.length);
-            for (final String uri: urisToGet) {
+            for (final String uri : urisToGet) {
                 final HttpGet httpget = new HttpGet(uri);
                 httpclient.execute(httpget, new FutureCallback<HttpResponse>() {
 

@@ -8,16 +8,16 @@ public class CompletableFutureCombineExample {
             System.out.println("Creating userName");
             return new UserName();
         }).thenComposeAsync((UserName name) -> CompletableFuture.supplyAsync(() -> {
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException e) {
-                        System.out.println(e.getMessage());
-                    }
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
 
-                    System.out.println("Populating name");
-                    name.setName("Bill");
-                    return name;
-                }));
+            System.out.println("Populating name");
+            name.setName("Bill");
+            return name;
+        }));
 
         CompletableFuture<UserPhone> userPhone = CompletableFuture.supplyAsync(() -> {
                     System.out.println("Creating phone");

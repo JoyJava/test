@@ -12,12 +12,12 @@ public class TestLatch {
             final int finalI = i;
             Runnable t = () -> {
                 try {
-                    System.out.println(" 等启动命令... TID:"+  Thread.currentThread().getId());
+                    System.out.println(" 等启动命令... TID:" + Thread.currentThread().getId());
                     startGate.await();
-                    System.out.println(" 接收到启动命令... TID:"+  Thread.currentThread().getId());
+                    System.out.println(" 接收到启动命令... TID:" + Thread.currentThread().getId());
 
                     try {
-                        System.out.println("启动子任务:"+ Thread.currentThread().getId());
+                        System.out.println("启动子任务:" + Thread.currentThread().getId());
                         task.run();
                     } finally {
                         endGate.countDown();
@@ -27,7 +27,7 @@ public class TestLatch {
                 }
 
             };
-           new Thread(t).start();
+            new Thread(t).start();
         }
         long start = System.nanoTime();
         try {
@@ -46,7 +46,7 @@ public class TestLatch {
 
     public static void main(String[] args) {
         Runnable t = () -> {
-            System.out.println("-----------线程ID:"+ Thread.currentThread().getId());
+            System.out.println("-----------线程ID:" + Thread.currentThread().getId());
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {

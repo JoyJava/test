@@ -48,7 +48,7 @@ import org.apache.http.ssl.SSLContexts;
 public class AsyncClientCustomSSL {
 
     public final static void main(String[] args) throws Exception {
-        KeyStore trustStore  = KeyStore.getInstance(KeyStore.getDefaultType());
+        KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
         FileInputStream instream = new FileInputStream(new File("my.keystore"));
         try {
             trustStore.load(instream, "nopassword".toCharArray());
@@ -62,7 +62,7 @@ public class AsyncClientCustomSSL {
         // Allow TLSv1 protocol only
         SSLIOSessionStrategy sslSessionStrategy = new SSLIOSessionStrategy(
                 sslcontext,
-                new String[] { "TLSv1" },
+                new String[]{"TLSv1"},
                 null,
                 SSLIOSessionStrategy.getDefaultHostnameVerifier());
         CloseableHttpAsyncClient httpclient = HttpAsyncClients.custom()

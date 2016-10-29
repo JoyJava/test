@@ -42,7 +42,7 @@ import org.apache.http.impl.nio.client.HttpAsyncClients;
  */
 public class AsyncClientExecuteProxy {
 
-    public static void main(String[] args)throws Exception {
+    public static void main(String[] args) throws Exception {
         CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault();
         try {
             httpclient.start();

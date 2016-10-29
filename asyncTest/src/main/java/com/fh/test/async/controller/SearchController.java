@@ -60,7 +60,6 @@ public class SearchController {
     }
 
 
-
     @RequestMapping("/user.do")
     public void test(HttpServletResponse response) throws IOException {
         response.getWriter().write("Hi, u guy.");

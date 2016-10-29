@@ -10,10 +10,10 @@ import java.util.stream.IntStream;
  */
 public class TestHash {
     public static void main(String[] args) {
-        Set<String > set = new HashSet<>(10);
+        Set<String> set = new HashSet<>(10);
 
-        IntStream.range(1,20).forEach((it) -> {
-            set.add(it+"");
+        IntStream.range(1, 20).forEach((it) -> {
+            set.add(it + "");
         });
 
         set.stream().forEach((it) -> {

@@ -100,7 +100,7 @@ public class HTTP测试 {
 
     public static void main(String[] args) throws Exception {
         String ss = "";
-        String url = "http://globalquotes.xignite.com/v3/xGlobalQuotes.json/GetGlobalDelayedQuotes?_Token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Username=jiawei.bao@jimu.com&IdentifierType=Symbol&Identifiers=" ;
+        String url = "http://globalquotes.xignite.com/v3/xGlobalQuotes.json/GetGlobalDelayedQuotes?_Token=DBEC7AE6E4C04ECEAE8F3F5F002D3C80&Username=jiawei.bao@jimu.com&IdentifierType=Symbol&Identifiers=";
 
         String[] strings = ss.split(",");
 //        for (int i = 0; i < strings.length/500; i++) {
@@ -111,15 +111,15 @@ public class HTTP测试 {
 //                .setDefaultConnectionConfig(connectionConfig).build();
         httpClient.start();
 
-        int take = 10 ;
-        for (int i = 0; i < strings.length/take; i++) {
+        int take = 10;
+        for (int i = 0; i < strings.length / take; i++) {
             String s = Arrays.asList(strings).stream().skip(i * take).limit(take).collect(Collectors.joining(","));
 //            String s = strings[i];
-            HttpGet httpget = new HttpGet(url + s );
+            HttpGet httpget = new HttpGet(url + s);
             httpClient.execute(httpget, new FutureCallback<HttpResponse>() {
                 @Override
                 public void completed(HttpResponse result) {
-                         System.out.println(" ~~~~~~~~~~~~ "+ (System.currentTimeMillis()));
+                    System.out.println(" ~~~~~~~~~~~~ " + (System.currentTimeMillis()));
                 }
 
                 @Override
@@ -133,8 +133,8 @@ public class HTTP测试 {
 
                 }
             });
-         }
+        }
 
-     }
+    }
 
 }
