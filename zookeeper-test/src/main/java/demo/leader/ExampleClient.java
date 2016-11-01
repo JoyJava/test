@@ -63,7 +63,13 @@ public class ExampleClient extends LeaderSelectorListenerAdapter implements Clos
     public void takeLeadership(CuratorFramework client) throws Exception {
         // we are now the leader. This method should not return until we want to relinquish leadership
 
-        final int waitSeconds = (int) (5 * Math.random()) + 1;
+        System.out.println("~~~~~~~~ "
+                + this.name
+                + " currentId: " + leaderSelector.getId()
+                + " hasLeadership: " + leaderSelector.hasLeadership()
+                + " leaderId: " + leaderSelector.getLeader().toString());
+        final int waitSeconds = (int) (1 * Math.random()) + 1;
+
 
         System.out.println(name + " is now the leader. Waiting " + waitSeconds + " seconds...");
         System.out.println(name + " has been leader " + leaderCount.getAndIncrement() + " time(s) before.");

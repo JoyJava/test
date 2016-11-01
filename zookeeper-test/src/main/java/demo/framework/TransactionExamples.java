@@ -29,7 +29,8 @@ public class TransactionExamples {
     public static Collection<CuratorTransactionResult> transaction(CuratorFramework client) throws Exception {
         // this example shows how to use ZooKeeper's new transactions
 
-        Collection<CuratorTransactionResult> results = client.inTransaction()
+        Collection<CuratorTransactionResult> results =
+                client.inTransaction()
                 .create().forPath("/a/path", "some data".getBytes())
                 .and()
                 .setData().forPath("/another/path", "other data".getBytes())

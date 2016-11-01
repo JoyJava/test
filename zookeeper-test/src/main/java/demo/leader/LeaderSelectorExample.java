@@ -31,6 +31,7 @@ import java.util.List;
 
 public class LeaderSelectorExample {
     private static final int CLIENT_QTY = 10;
+    public static String host = "127.0.0.1:12181,127.0.0.1:12182,127.0.0.1:12183";
 
     private static final String PATH = "/examples/leader";
 
@@ -44,19 +45,22 @@ public class LeaderSelectorExample {
         List<ExampleClient> examples = Lists.newArrayList();
         TestingServer server = new TestingServer();
         try {
-            for (int i = 0; i < CLIENT_QTY; ++i) {
-                CuratorFramework client = CuratorFrameworkFactory.newClient(server.getConnectString(), new ExponentialBackoffRetry(1000, 3));
+//            for (int i = 0; i < CLIENT_QTY; ++i) {
+                CuratorFramework client = CuratorFrameworkFactory
+                            .newClient(host, new ExponentialBackoffRetry(1000, 3));
                 clients.add(client);
 
-                ExampleClient example = new ExampleClient(client, PATH, "Client #" + i);
+                ExampleClient example = new ExampleClient(client, PATH, "Client#" );
+//                ExampleClient example = new ExampleClient(client, PATH, "Client#" + i);
                 examples.add(example);
 
                 client.start();
                 example.start();
-            }
+//            }
 
             System.out.println("Press enter/return to quit\n");
-            new BufferedReader(new InputStreamReader(System.in)).readLine();
+            String sleepSec = new BufferedReader(new InputStreamReader(System.in)).readLine();
+
         } finally {
             System.out.println("Shutting down...");
 

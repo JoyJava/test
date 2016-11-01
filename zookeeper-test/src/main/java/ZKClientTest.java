@@ -1,4 +1,3 @@
-import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
@@ -9,25 +8,25 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
  */
 public class ZKClientTest {
 
+    public static String host = "127.0.0.1:12181,127.0.0.1:12182,127.0.0.1:12183";
 
     public static void main(String[] args) throws Exception {
-//        CuratorFramework zkCli = CuratorFrameworkFactory.builder()
-//                .connectString("127.0.0.1:2181")
-//                .retryPolicy(new ExponentialBackoffRetry(1000, 3))
-////                .namespace("fh")
-//                .build();
+        CuratorFramework zkCli = CuratorFrameworkFactory.builder()
+                .connectString(host)
+                .retryPolicy(new ExponentialBackoffRetry(1000, 3))
+                .build();
+        zkCli.start();
+        String s = zkCli.create().forPath("/fh2");
+
+        System.out.println("s = " + s);
+
+//        RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
+//        CuratorFrameworkFactory.newClient("127.0.0.1:2181", retryPolicy);
+//        CuratorFramework client = CuratorFrameworkFactory.newClient("127.0.0.1:2181", retryPolicy);
+//        client.start();
 //
-//        String s = zkCli.create().forPath("/fh");
-
-//        System.out.println("s = " + s);
-
-        RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
-        CuratorFrameworkFactory.newClient("127.0.0.1:2181", retryPolicy);
-        CuratorFramework client = CuratorFrameworkFactory.newClient("127.0.0.1:2181", retryPolicy);
-        client.start();
-
-        String forPath = client.create().forPath("/dubbo");
-        System.out.println("forPath = " + forPath);
+//        String forPath = client.create().forPath("/dubbo");
+//        System.out.println("forPath = " + forPath);
     }
 
 }
