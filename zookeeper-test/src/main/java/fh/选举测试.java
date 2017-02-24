@@ -16,7 +16,8 @@ import java.util.concurrent.TimeUnit;
  * Date: 16/10/31 下午5:14
  */
 public class 选举测试 {
-    public static String host = "127.0.0.1:12181,127.0.0.1:12182,127.0.0.1:12183";
+//    public static String host = "127.0.0.1:12181,127.0.0.1:12182,127.0.0.1:12183";
+    public static String host = "127.0.0.1:2181";
 
     public static void main(String[] args) throws IOException {
         System.out.println("input sec...");
