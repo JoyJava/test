@@ -15,7 +15,7 @@
 // * Date: 16/5/27 18:07
 // */
 //@RequestMapping
-//public class TestController {
+//public class controller {
 //   private static     int asyncTimeoutInSeconds = 10 ;
 //    @RequestMapping("/book")
 //    public void getBook(HttpServletRequest request, @RequestParam(value="skuId") final Long skuId,

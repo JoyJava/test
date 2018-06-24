@@ -1,6 +1,8 @@
 package com.fh.demo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -9,12 +11,17 @@ import java.math.BigDecimal;
  * Date: 2018/6/23 20:22
  */
 @Data
+@NoArgsConstructor
 public class Detect {
+
 
     /**
      * 检验记录单
      */
-    class detectRecord {
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    static class detectRecord {
         String dsId; // 检验检测机构唯一编 码，见附录B
         String dsName; //检验检测机构名称
         String detectSn; //检测流水号,见附录 B.7
@@ -78,7 +85,11 @@ public class Detect {
         /**
          * 动力性节点
          */
-        class Power {
+        @Data
+        @NoArgsConstructor
+
+
+        class power {
 
 
             BigDecimal standardPower;//达标功率，单位:kW
@@ -93,7 +104,11 @@ public class Detect {
         /**
          * 燃料经济性
          */
-        class FuelEconomy {
+        @Data
+        @NoArgsConstructor
+
+
+        class fuelEconomy {
             BigDecimal speedFuelPerHundredKm;//等速百公里油耗标准 限值
             BigDecimal measuredValue;//实测值
             String evaluate;//判定:见附录B.8
@@ -103,11 +118,17 @@ public class Detect {
         /**
          * 制动性
          */
-        class Brake {
+        @Data
+        @NoArgsConstructor
+
+        class brake {
 
             /**
              * 原始数据
              */
+            @Data
+            @NoArgsConstructor
+    
             class initData {
 
                 BigDecimal axleSerialNo;// 轴序号(第几轴)， 规定 值:1、2、3、4、5、6
@@ -127,11 +148,17 @@ public class Detect {
             /**
              * 整车
              */
+            @Data
+            @NoArgsConstructor
+    
             class wholeVehicle {
 
                 /**
                  * 单车
                  */
+                @Data
+                @NoArgsConstructor
+        
                 class singleVehicle {
                     BigDecimal horizontalWeight;// 水平称重，单位:daN
                     BigDecimal wholeVehicleBrakeRate;// 整车制动率，单位:%
@@ -142,6 +169,9 @@ public class Detect {
                 /**
                  * 汽车列车项目第1部分
                  */
+                @Data
+                @NoArgsConstructor
+        
                 class vehicleSerial1 {
                     BigDecimal horizontalWeight;// 水平称重，单位:daN
                     BigDecimal vehicleBrakeRateTractor;// 整车制动率(牵)， 单位:%
@@ -154,6 +184,9 @@ public class Detect {
                 /**
                  * 制动时序(时 间)
                  */
+                @Data
+                @NoArgsConstructor
+        
                 class brakeSeqTime {
                     BigDecimal axle1;//轴1，单位:s
                     BigDecimal axle2;//轴1，单位:s
@@ -167,6 +200,9 @@ public class Detect {
                 /**
                  * 制动时序(时 序)
                  */
+                @Data
+                @NoArgsConstructor
+        
                 class brakeSeq {
                     String axle1;//轴1，规定值:1、2、3、 4、5、6
                     String axle2;//轴1，规定值:1、2、3、 4、5、6
@@ -174,13 +210,15 @@ public class Detect {
                     String axle4;//轴1，规定值:1、2、3、 4、5、6
                     String axle5;//轴1，规定值:1、2、3、 4、5、6
                     String axle6;//轴1，规定值:1、2、3、 4、5、6
-
                     String evaluate;// 判定:见附录B.8
                 }
 
                 /**
                  * 汽车列车项目第2部分
                  */
+                @Data
+                @NoArgsConstructor
+        
                 class vehicleSerial2 {
                     BigDecimal brakeRateTractorTrain;//整车制动率比 %(牵引 车/列车)，单位:%
                     BigDecimal brakeRateTrailerTrain;//整车制动率比 %(挂车 /列车)，单位:%
@@ -192,6 +230,9 @@ public class Detect {
             /**
              * 单轴
              */
+            @Data
+            @NoArgsConstructor
+    
             class singleAxle {
 
                 BigDecimal axleSerialNo; //轴序号(第几轴)，规定 值:1、2、3、4、5、6
@@ -208,10 +249,16 @@ public class Detect {
             /**
              * 路试
              */
+            @Data
+            @NoArgsConstructor
+    
             class roadTest {
                 /**
                  * 行车制动
                  */
+                @Data
+                @NoArgsConstructor
+        
                 class driveBrake {
                     BigDecimal initialVelocity;// 初速度，单位:km/h
                     BigDecimal laneWidth;// 试车道宽度，单位:m
@@ -225,6 +272,9 @@ public class Detect {
                 /**
                  * 驻车制动
                  */
+                @Data
+                @NoArgsConstructor
+        
                 class parkBrake {
                     BigDecimal parkSlope;// 驻车坡度，单位:%
                     String parkResult;// 不少于5 min坡道驻车 情况，规定值:溜坡、 不溜坡
@@ -237,11 +287,17 @@ public class Detect {
         /**
          * 排放性
          */
+        @Data
+        @NoArgsConstructor
+
         class emission {
 
             /**
              * 汽油车
              */
+            @Data
+            @NoArgsConstructor
+    
             class gasolineVehicle {
                 BigDecimal highCo;//CO_高怠速，单位:%
                 BigDecimal highHc;//HC_高怠速，单位:10-6
@@ -264,6 +320,9 @@ public class Detect {
             /**
              * 柴油车
              */
+            @Data
+            @NoArgsConstructor
+    
             class dieselVehicle {
                 BigDecimal ratio1;//光吸收系数1， 单位:m-1
                 BigDecimal ratio2;//光吸收系数1， 单位:m-1
@@ -283,6 +342,9 @@ public class Detect {
             /**
              * 悬架
              */
+            @Data
+            @NoArgsConstructor
+    
             class suspension {
                 String axleType;//轴类型，规定值:前轴、 后轴
                 BigDecimal efficiencyOfLeftAxle;//左吸收率，单位:%
@@ -294,6 +356,9 @@ public class Detect {
             /**
              * 前照灯
              */
+            @Data
+            @NoArgsConstructor
+    
             class mainLamp {
                 String axleType;//灯类型，见附录B.9
 
@@ -311,6 +376,9 @@ public class Detect {
             /**
              * 单项检测
              */
+            @Data
+            @NoArgsConstructor
+    
             class singleItem {
 
                 String itemCode;//单项检测项目编码,见 附录B.10
@@ -324,6 +392,9 @@ public class Detect {
     /**
      * 图片资料
      */
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     class image {
         String imageUrl;//图片链接地址
         String imageType;//检验工位照片类型,见 附录B.11
@@ -332,6 +403,9 @@ public class Detect {
     /**
      * 图片资料
      */
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     class video {
         String videoUrl;//图片链接地址
         String videoType;//检验工位照片类型,见 附录B.11
@@ -340,6 +414,9 @@ public class Detect {
     /**
      * 检验报告单
      */
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     class detectReport {
 
         String detectResult;//检验结论:一级、二级、 三级或合格、不合格
@@ -348,6 +425,9 @@ public class Detect {
         /**
          * 单车(牵引车)基本信 息
          */
+        @Data
+        @NoArgsConstructor
+
         class tractorInfo {
             String vehicleNo;// 号牌号码
             String vinNo;// 车辆识别代码
@@ -366,6 +446,9 @@ public class Detect {
         /**
          * 号牌号码
          */
+        @Data
+        @NoArgsConstructor
+
         class trailerInfo {
             String vehicleNo;//号牌号码
             String client;//委托人
@@ -391,6 +474,9 @@ public class Detect {
         /**
          * 性能检测
          */
+        @Data
+        @NoArgsConstructor
+
         class performanceItem{
             String itemCode ;//性能检测项目编码，见 附B.14
             String detectData ;//检测数据，各项格式参 照GB 18565
