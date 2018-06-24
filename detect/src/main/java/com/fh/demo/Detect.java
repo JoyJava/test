@@ -311,7 +311,7 @@ public class Detect {
             /**
              * 单项检测
              */
-            class singleItem{
+            class singleItem {
 
                 String itemCode;//单项检测项目编码,见 附录B.10
 
@@ -320,17 +320,19 @@ public class Detect {
 
         }
     }
+
     /**
-     *图片资料
+     * 图片资料
      */
-    class   image{
+    class image {
         String imageUrl;//图片链接地址
         String imageType;//检验工位照片类型,见 附录B.11
     }
+
     /**
-     *图片资料
+     * 图片资料
      */
-    class   video{
+    class video {
         String videoUrl;//图片链接地址
         String videoType;//检验工位照片类型,见 附录B.11
     }
@@ -338,18 +340,64 @@ public class Detect {
     /**
      * 检验报告单
      */
-    class detectReport{
+    class detectReport {
 
         String detectResult;//检验结论:一级、二级、 三级或合格、不合格
         String note;//备注
 
+        /**
+         * 单车(牵引车)基本信 息
+         */
+        class tractorInfo {
+            String vehicleNo;// 号牌号码
+            String vinNo;// 车辆识别代码
+            String engineNo;// 发动机号码
+            String client;// 委托人
+            String vehicleBrandModel;// 厂牌型号，参照JT/T 697.7
+            String administrativeAera;// 行政区划代码，参照 GB/T 2260
+            String vehicleType;// 车辆类型:参照GA 24.4
+            String transCertificateCode;// 道路运输证号
+            String registDate;// 注册登记日期，车辆行 驶证初领日期: YYYYMMDD
+            String productionDate;// 出厂年月: YYYYMMDD
+            String driveLicense;// 机动车行驶证号
+            String vehicleBodyColor;// 车身颜色,见附录B.2
+        }
+
+        /**
+         * 号牌号码
+         */
+        class trailerInfo {
+            String vehicleNo;//号牌号码
+            String client;//委托人
+            String vehicleType;//车辆类型:参照GA 24.4
+            String vehicleBrandModel;//厂牌型号，参照JT/T 697.7
+            String transCertificateCode;//道路运输证号
+
+            String registDate;//注册登记日期: YYYYMMDD
+            String productionDate;//出厂日期: YYYYMMDD
+            String vinNo;//车辆识别代码
+            String driveLicense;//车辆行驶证号
+        }
+
+        /**
+         * 人工检验结果
+         */
+        class manualTestResult {
+            String detectCls;//人工检验项目代码，见 附录B.13
+            String evaluate;//判定:见附录B.8
+            String unqualifiedItem;//不符合项目
+        }
+
+        /**
+         * 性能检测
+         */
+        class performanceItem{
+            String itemCode ;//性能检测项目编码，见 附B.14
+            String detectData ;//检测数据，各项格式参 照GB 18565
+            String standardValue ;//标准限值，各项格式参 照GB 18565
+            String evaluate ;//判定:见附录B.8
+        }
     }
 
-    /**
-     * 单车(牵引车)基本信 息
-     */
-    class tractorInfo{
-
-    }
 
 }
